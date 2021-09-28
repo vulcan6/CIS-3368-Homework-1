@@ -1,6 +1,7 @@
 # Homework 1
 # Erick Jimenez
 # 1463639
+# random comment
 
 import mysql.connector
 from mysql.connector import Error
