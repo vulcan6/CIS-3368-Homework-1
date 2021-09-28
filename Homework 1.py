@@ -23,7 +23,7 @@ def create_connection(host_name, user_name, user_password, db_name):
 
 conn = create_connection("cis3368.cdmtjsnscdxt.us-east-2.rds.amazonaws.com", "admin", "Infernus0!", "cis3368")
 cursor = conn.cursor(dictionary=True)
-sql = "SELECT * FROM users"
+sql = "SELECT * FROM shoppinglist"
 cursor.execute(sql)
 rows = cursor.fetchall()
 
