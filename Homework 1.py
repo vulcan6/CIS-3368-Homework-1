@@ -1,7 +1,6 @@
 # Homework 1
 # Erick Jimenez
 # 1463639
-# random comment
 
 import mysql.connector
 from mysql.connector import Error
@@ -47,4 +46,5 @@ def execute_read_query(connection, query):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-
+for shoppinglist in rows:
+    print(shoppinglist)
