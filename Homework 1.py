@@ -109,6 +109,7 @@ while option != "q":
         
     elif option == "r1":
         # alphabetical order
+        print("List sorted by ALPHABETICAL ORDER:  ")
         cursor.execute("SELECT * FROM shoppinglist ORDER BY itemdescription")
         row = cursor.fetchone()
         while row is not None:
@@ -119,7 +120,12 @@ while option != "q":
 
     elif option == "r2":
         # ascended quantity
-        print()
+        print("List sorted by ASCENDING QUANTITY:  ")
+        cursor.execute("SELECT * FROM shoppinglist ORDER BY quantity")
+        row = cursor.fetchone()
+        while row is not None:
+            print(row)
+            row = cursor.fetchone()
     else:
         print("Read the damn menu.")
     #got quit to work Tada
