@@ -109,10 +109,16 @@ while option != "q":
         
     elif option == "r1":
         # alphabetical order
-        for shoppinglist in rows:
-            print(shoppinglist)
+        cursor.execute("SELECT * FROM shoppinglist ORDER BY itemdescription")
+        row = cursor.fetchone()
+        while row is not None:
+            print(row)
+            row = cursor.fetchone()
+            #https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchone.html
+            #Got the Alphabetical sort working
+
     elif option == "r2":
-        # sorted quantity
+        # ascended quantity
         print()
     else:
         print("Read the damn menu.")
