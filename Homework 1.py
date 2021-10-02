@@ -67,3 +67,28 @@ option = str(input("Enter your option: "))
 
 # simple UI no actual established working keys yet
 
+while option != "q":
+    #sorting options
+    if option == "a":
+        #add item action
+        print()
+    elif option == "d":
+        # delete action
+        print()
+    elif option == "u":
+        # update action
+        print()
+    elif option == "r1":
+        # alphabetical order
+        print()
+    elif option == "r2":
+        # sorted quantity
+        print()
+    else:
+        print("Read the damn menu.")
+    #got quit to work Tada
+    menu()
+    option = str(input("Enter your option: "))
+
+    
+
