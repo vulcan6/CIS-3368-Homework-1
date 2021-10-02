@@ -4,6 +4,8 @@
 
 import mysql.connector
 from mysql.connector import Error
+import datetime
+from datetime import date
 
 def create_connection(host_name, user_name, user_password, db_name):
     connection = None
@@ -46,5 +48,22 @@ def execute_read_query(connection, query):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-for shoppinglist in rows:
-    print(shoppinglist)
+# Just realized the ease of just importing from the sql file and making this portion less clunky. Noted for future assignments. 
+
+#Beginning creation of menu.
+def menu():
+    print("""
+    Welcome User!
+    What would like to do with the database?
+    [a] Add Item
+    [d] Remove Item
+    [u] Update item details
+    [r1] Output all items in alphabetical order
+    [r2] Output all items by sorted quantity
+    [q] Quit Session """)
+
+menu()
+option = str(input("Enter your option: "))
+
+# simple UI no actual established working keys yet
+
