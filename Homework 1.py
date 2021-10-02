@@ -5,7 +5,7 @@
 import mysql.connector
 from mysql.connector import Error
 import datetime
-from datetime import date
+from datetime import datetime
 
 def create_connection(host_name, user_name, user_password, db_name):
     connection = None
@@ -62,6 +62,8 @@ def menu():
     [r2] Output all items by sorted quantity
     [q] Quit Session """)
 
+# def returnmenu():
+
 menu()
 option = str(input("Enter your option: "))
 
@@ -71,16 +73,33 @@ while option != "q":
     #sorting options
     if option == "a":
         #add item action
-        print()
+        item_from_user =  str(input("What item would you like to add?  "))
+        item_amount = int(input("How much would you like to add?  "))
+        now=datetime.now()
+        item_dateadded = now.strftime('%Y-%m-%d %H:%M:%S')
+
+        query = "INSERT INTO shoppinglist (itemdescription, quantity, dateadded) VALUES ('%s', %s, '%s')" % (item_from_user, item_amount, item_dateadded)
+
+        execute_query(conn, query)
+
     elif option == "d":
         # delete action
-        print()
+        for shoppinglist in rows:
+            print(shoppinglist)
+        print("What item would you like to delete?  ")
+        item_to_delete = int(input())
+        delete_statement = "DELETE FROM shoppinglist WHERE id = %s" % (item_to_delete)
+
+        execute_query(conn, delete_statement)
+        # Does delete ID but does not update immediately. Need to quit and run code again for updated for updated shopping list.
+
     elif option == "u":
         # update action
         print()
     elif option == "r1":
         # alphabetical order
-        print()
+        for shoppinglist in rows:
+            print(shoppinglist)
     elif option == "r2":
         # sorted quantity
         print()
@@ -89,6 +108,8 @@ while option != "q":
     #got quit to work Tada
     menu()
     option = str(input("Enter your option: "))
+
+print("Goodbye User!")
 
     
 
