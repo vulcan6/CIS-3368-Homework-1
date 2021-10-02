@@ -1,7 +1,9 @@
 # Homework 1
 # Erick Jimenez
 # 1463639
+# Hey Professor! I've been uploading to my own personal GitHub. I skimmed through the details of the homework and missed this part. *sad*
 
+from re import U
 import mysql.connector
 from mysql.connector import Error
 import datetime
@@ -56,13 +58,11 @@ def menu():
     Welcome User!
     What would like to do with the database?
     [a] Add Item
-    [d] Remove Item
+    [d] Delete Item
     [u] Update item details
     [r1] Output all items in alphabetical order
     [r2] Output all items by sorted quantity
     [q] Quit Session """)
-
-# def returnmenu():
 
 menu()
 option = str(input("Enter your option: "))
@@ -91,11 +91,22 @@ while option != "q":
         delete_statement = "DELETE FROM shoppinglist WHERE id = %s" % (item_to_delete)
 
         execute_query(conn, delete_statement)
-        # Does delete ID but does not update immediately. Need to quit and run code again for updated for updated shopping list.
+        # Does delete ID but does not update immediately. Need to quit and run code again for updated shopping list.
 
     elif option == "u":
         # update action
-        print()
+        for shoppinglist in rows:
+            print(shoppinglist)
+        idnum = int(input("What item would you like to update?  "))
+        quantitynum = int(input("New Amount:  "))
+        update_invoice_query = """
+        UPDATE shoppinglist
+        SET quantity = %s
+        WHERE id = %s """ % (quantitynum, idnum)
+# Established a working update query
+        execute_query(conn, update_invoice_query)
+
+        
     elif option == "r1":
         # alphabetical order
         for shoppinglist in rows:
